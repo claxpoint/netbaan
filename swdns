@@ -3,8 +3,8 @@
 RED='\033[0;41;30m'
 STD='\033[0;0;39m'
 
-BACKUP=2
- 
+BACKUP=1
+
 pause(){
   read -p "Press [Enter] key to continue..." fackEnterKey
 }
@@ -17,9 +17,9 @@ one(){
 reset(){
 	echo "Reset resolv.conf with backup file"
 	mv /etc/resolv.conf.default /etc/resolv.conf
-	sed -i 's/BACKUP=2/BACKUP=2/g' main.sh
+	sed -i '6s/BACKUP=2/BACKUP=1/' swdns
 	exit
-} 
+}
 
 two(){
 	echo "two() called"
@@ -28,8 +28,8 @@ two(){
  
 show_menus() {
 	clear
-	echo "=================="	
-	echo " Easy-DNSChanger"
+	echo "=================="
+	echo "	    SWDNS"
 	echo "==================="
 	echo "[1.] Set DNS to Localhost (127.0.0.1)"
 	echo "[2.] Reset Terminal"
@@ -54,8 +54,8 @@ trap '' SIGINT SIGQUIT SIGTSTP
 if [ $BACKUP == 1 ]
 then
     echo "Creating resolv.conf backup files...." && sleep 1
-    cp /etc/resolv.conf /etc/resolv.conf.default 
-    sed -i 's/BACKUP=2/BACKUP=2/g' main.sh
+    cp /etc/resolv.conf /etc/resolv.conf.default
+    sed -i '6s/BACKUP=1/BACKUP=2/' swdns
 fi
 
 while true
