@@ -7,8 +7,10 @@ pause(){
 }
 
 set_localhost(){
+	clear
 	echo "Set nameserver to 127.0.0.1"
         echo "nameserver 127.0.0.1" > /etc/resolv.conf
+	echo -e "\e[32mSUCCESS\e[0m"
 	exit
 }
 
@@ -16,6 +18,7 @@ reset(){
 	echo "Reset resolv.conf with backup file"
 	mv /etc/resolv.conf.default /etc/resolv.conf
 	sed -i '3s/BACKUP=2/BACKUP=1/' swdns
+	echo -e "\e[32mRESET SUCCESS\e[0m"
 	exit
 }
 
@@ -23,19 +26,20 @@ set_manual(){
 	clear
 	read -p "Input The DNS server you want : " manual_set
 	echo "nameserver" $manual_set > /etc/resolv.conf
-        exit
+        echo -e "\e[32mSUCCESS\e[0m"
+	exit
 }
  
 show_menus() {
 	clear
 	echo "============================="
-	echo "           SWDNS"
+	echo -e "         \e[5m- SWDNS -\e[25m"
 	echo "github.com/yanuarakhid/swdns"
 	echo "============================="
-	echo "[1.] Set DNS to Localhost (127.0.0.1)"
-	echo "[2.] Manual Set"
-	echo "[3.] Reset To Default resolv.conf"
-	echo "[4.] Exit"
+	echo -e "\e[33m[1.] Set DNS to localhost (127.0.0.1)\e[39m"
+	echo -e "\e[34m[2.] Manual Set\e[39m"
+	echo -e "\e[32m[3.] Reset To Default resolv.conf\e[39m"
+	echo -e "\e[31m[4.] Exit\e[39m"
 }
 
 read_options(){
