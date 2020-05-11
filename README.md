@@ -35,3 +35,12 @@ Uninstall:
 ```
 sudo make uninstall
 ```
+Tested In: 
+----------
+
+OS | Tested
+------------ | -------------
+Ubuntu 18.04 LTS (Bionic Baver)         |:heavy_check_mark:
+Debian 9 (Stretch)                      |:heavy_check_mark:
+Debian 10 (Buster)	                   |:heavy_check_mark:
+Arch Linux                              |:heavy_check_mark:
