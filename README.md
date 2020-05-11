@@ -18,7 +18,7 @@ Require :
 Installation : 
 --------------
 ```
-git clone https://github.com/yanuarakhid/Easy-NagiosInstall.git
+git clone https://github.com/yanuarakhid/swdns.git
 ```
 ```
 cd swdns && sudo make install
