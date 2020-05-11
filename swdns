@@ -1,39 +1,40 @@
 #!/bin/bash
-##################
-RED='\033[0;41;30m'
-STD='\033[0;0;39m'
 
-BACKUP=1
+BACKUP=2
 
 pause(){
   read -p "Press [Enter] key to continue..." fackEnterKey
 }
 
-one(){
-	echo "one() called"
-        pause
+set_localhost(){
+	echo "Set nameserver to 127.0.0.1"
+        echo "nameserver 127.0.0.1" > /etc/resolv.conf
+	exit
 }
 
 reset(){
 	echo "Reset resolv.conf with backup file"
 	mv /etc/resolv.conf.default /etc/resolv.conf
-	sed -i '6s/BACKUP=2/BACKUP=1/' swdns
+	sed -i '3s/BACKUP=2/BACKUP=1/' swdns
 	exit
 }
 
-two(){
-	echo "two() called"
-        pause
+set_manual(){
+	clear
+	read -p "Input The DNS server you want : " manual_set
+	echo "nameserver" $manual_set > /etc/resolv.conf
+        exit
 }
  
 show_menus() {
 	clear
-	echo "=================="
-	echo "	    SWDNS"
-	echo "==================="
+	echo "============================="
+	echo "           SWDNS"
+	echo "github.com/yanuarakhid/swdns"
+	echo "============================="
 	echo "[1.] Set DNS to Localhost (127.0.0.1)"
-	echo "[2.] Reset Terminal"
-	echo "[3.] Reset To Default"
+	echo "[2.] Manual Set"
+	echo "[3.] Reset To Default resolv.conf"
 	echo "[4.] Exit"
 }
 
@@ -41,8 +42,8 @@ read_options(){
 	local choice
 	read -p "Enter choice [ 1 - 3] " choice
 	case $choice in
-		1) one ;;
-		2) two ;;
+		1) set_localhost ;;
+		2) set_manual ;;
 		3) reset ;;
 		4|q) exit 0;;
 		*) echo -e "${RED}Invalid Input Option ${choice} ...${STD}" && sleep 1
@@ -55,7 +56,7 @@ if [ $BACKUP == 1 ]
 then
     echo "Creating resolv.conf backup files...." && sleep 1
     cp /etc/resolv.conf /etc/resolv.conf.default
-    sed -i '6s/BACKUP=1/BACKUP=2/' swdns
+    sed -i '3s/BACKUP=1/BACKUP=2/' swdns
 fi
 
 while true
