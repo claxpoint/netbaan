@@ -1,6 +1,23 @@
 #!/bin/bash
 
-BACKUP=2
+#
+#   Author: Akhid Yanuar A.F (https://github.com/yanuarakhid)
+#
+#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
+
+BACKUP=1
 
 pause(){
   read -p "Press [Enter] key to continue..." fackEnterKey
@@ -17,7 +34,7 @@ set_localhost(){
 reset(){
 	echo "Reset resolv.conf with backup file"
 	mv /etc/resolv.conf.default /etc/resolv.conf
-	sed -i '3s/BACKUP=2/BACKUP=1/' swdns
+	sed -i '20s/BACKUP=2/BACKUP=1/' swdns
 	echo -e "\e[32mRESET SUCCESS\e[0m"
 	exit
 }
@@ -60,7 +77,7 @@ if [ $BACKUP == 1 ]
 then
     echo "Creating resolv.conf backup files...." && sleep 1
     cp /etc/resolv.conf /etc/resolv.conf.default
-    sed -i '3s/BACKUP=1/BACKUP=2/' swdns
+    sed -i '20s/BACKUP=1/BACKUP=2/' swdns
 fi
 
 while true
