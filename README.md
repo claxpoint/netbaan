@@ -25,7 +25,7 @@ Mac - ❌
 IOS - ❌
 
 
-Linux - ✅ - [Install And Run guide in here](https://github.com/claxpoint/netbaan/blob/main/LINUX.md) - v1.0
+Linux - ✅ - [Install And Run guide in here](https://github.com/claxpoint/netbaan/blob/master/LINUX.md) - v1.0
 
 
 PWA - ❌
