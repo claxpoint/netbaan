@@ -1,12 +1,12 @@
 #!/bin/sh
 
 # Script title and information
-echo "=========================================================================="
-echo "      SWDNS - Smart DNS Changer v1.2      "
-echo "=========================================================================="
-echo "Copyright (c) 2023 Claxpoint. All rights reserved."
-echo "https://github.com/claxpoint"
-echo "=========================================================================="
+echo "\e[32m=========================================================================\e[0m"
+echo "\e[32m           SWDNS - Smart DNS Changer v1.0            \e[0m"
+echo "\e[32m=========================================================================\e[0m"
+echo "\e[32mCopyright (c) 2023 Claxpoint. All rights reserved.\e[0m"
+echo "\e[32mhttps://github.com/claxpoint\e[0m"
+echo "\e[32m=========================================================================\e[0m"
 
 # Function to display the main menu
 display_menu() {
@@ -22,34 +22,34 @@ display_menu() {
 
 # Function to set DNS to localhost
 set_dns_localhost() {
-  echo "Setting DNS to localhost..."
+  echo "\e[32mSetting DNS to localhost...\e[0m"
   sudo echo "nameserver 127.0.0.1" > /etc/resolv.conf
-  echo "DNS set to localhost successfully."
+  echo "\e[32mDNS set to localhost successfully.\e[0m"
 }
 
 # Function for manual DNS setting
 manual_dns_set() {
-  echo "Enter primary DNS server IP:"
+  echo "\e[32mEnter primary DNS server IP:\e[0m"
   read primary_dns_server
 
-  echo "Enter secondary DNS server IP (optional, press Enter to skip):"
+  echo "\e[32mEnter secondary DNS server IP (optional, press Enter to skip):\e[0m"
   read secondary_dns_server
 
-  echo "Setting DNS servers..."
+  echo "\e[32mSetting DNS servers...\e[0m"
   sudo echo "nameserver $primary_dns_server" > /etc/resolv.conf
 
   if [ -n "$secondary_dns_server" ]; then
     echo "nameserver $secondary_dns_server" | sudo tee -a /etc/resolv.conf
   fi
 
-  echo "DNS servers set successfully."
+  echo "\e[32mDNS servers set successfully.\e[0m"
 }
 
 # Function to reset DNS to default
 reset_dns() {
-  echo "Resetting DNS to default..."
+  echo "\e[32mResetting DNS to default...\e[0m"
   sudo mv /etc/resolv.conf.bak /etc/resolv.conf
-  echo "DNS reset to default successfully."
+  echo "\e[32mDNS reset to default successfully.\e[0m"
 }
 
 # Function to test DNS servers (add your implementation here)
