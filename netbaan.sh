@@ -2,7 +2,7 @@
 
 # Script title and information
 echo "=========================================================================="
-echo "      SWDNS - Smart DNS Changer v1.3      "
+echo "   SWDNS - Smart DNS Changer v1.4   "
 echo "=========================================================================="
 echo "Copyright (c) 2023 Claxpoint. All rights reserved."
 echo "https://github.com/claxpoint"
@@ -27,11 +27,12 @@ display_menu() {
   echo "
   1. **Set DNS to localhost (127.0.0.1)**
   2. Manual Set
-  3. Test DNS Servers (Iranian & Global)
-  4. Reset To Default resolv.conf
-  5. Exit
+  3. Auto u3switcher Scan
+  4. Test DNS Servers (Iranian & Global)
+  5. Reset To Default resolv.conf
+  6. Exit
 
-  Enter choice [1-5]: "
+  Enter choice [1-6]: "
 }
 
 # Function to set DNS to localhost
@@ -63,23 +64,28 @@ echo "Resetting DNS to default\.\.\."
 sudo mv /etc/resolv\.conf\.bak /etc/resolv\.conf
 echo "DNS reset to default successfully\."
 \}
-\# Function to test DNS servers
+\# Function to test DNS servers \(informational, doesn't switch automatically\)
 test\_dns\_servers\(\) \{
 echo "\*\* Testing DNS Servers \(Iranian & Global\) \*\*"
 echo "\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\="
 \# Test Iranian DNS servers
 echo "\*\* Iranian Servers \*\*"
+fastest\_server\=""
+fastest\_ping\_time\=9999  \# Initialize with a high value
 for server in "</span>{iranian_dns_servers[@]}"; do
-    ping_time=$(ping -c 3 -W 1 $server | grep "time" | awk '{print $7}')
-    echo "  - $server: <span class="math-inline">ping\_time ms"
+    ping_time=$(ping -c 3 -W 1 $server | grep "time" | awk '{print <span class="math-inline">7\}'\)
+ping\_time\=</span>{ping_time%ms}  # Remove "ms" from the end
+
+    echo "  - $server: $ping_time ms"
+
+    if [[ $ping_time -lt $fastest_ping_time ]]; then
+      fastest_server=$server
+      fastest_ping_time=<span class="math-inline">ping\_time
+fi
 done
 \# Test global DNS servers
 echo "\*\* Global Servers \*\*"
 for server in "</span>{global_dns_servers[@]}"; do
-    ping_time=$(ping -c 3 -W 1 $server | grep "time" | awk '{print $7}')
-    echo "  - $server: $ping_time ms"
-  done
-
-  echo "============================================="
-
-  # Prompt user to choose a server based on ping times
+    ping_time=$(ping -c 3 -W 1 $server | grep "time" | awk '{print <span class="math-inline">7\}'\)
+ping\_time\=</span>{ping_time%ms}  # Remove "ms" from the end
+    echo "  - $server: $
