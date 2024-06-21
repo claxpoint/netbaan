@@ -1,6 +1,8 @@
 Require :
 ---------
-- make
+- git
+- u3jit-core (Does not need after V1.0)
+- sudo (root-commend)
 
 Installation : 
 --------------
