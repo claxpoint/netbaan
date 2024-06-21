@@ -4,6 +4,8 @@ Require :
 - u3jit-core (Does not need after V1.0)
 - sudo (root-commend)
 
+![](https://s8.uupload.ir/files/nb_jvej.png)
+
 Installation : 
 --------------
 ```
