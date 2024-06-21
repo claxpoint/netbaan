@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # Print welcome message and script info in green
-echo -e "\033[92mWelcome to NetBaan!\033[0m"
-echo -e "\033[92mNetBaan - v1.0 - By Claxpoint\033[0m"
-echo -e "\033[92mFor more info or support, visit my GitHub: https://github.com/claxpoint\033[0m"
+echo "\033[92mWelcome to NetBaan!\033[0m"
+echo "\033[92mNetBaan - v1.0 - By Claxpoint\033[0m"
+echo "\033[92mFor more info or support, visit my GitHub: https://github.com/claxpoint\033[0m"
 
 # Get user input for primary and secondary DNS (emphasize both)
 echo "** Enter the IP addresses for your primary and secondary DNS servers (optional for secondary):"
