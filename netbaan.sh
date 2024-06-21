@@ -2,7 +2,7 @@
 
 # Script title and information
 echo "=========================================================================="
-echo "                     SWDNS - Smart DNS Changer v1.0                       "
+echo "           SWDNS - Smart DNS Changer v1.0            "
 echo "=========================================================================="
 echo "Copyright (c) 2023 Claxpoint. All rights reserved."
 echo "https://github.com/claxpoint"
@@ -11,7 +11,7 @@ echo "==========================================================================
 # Function to display the main menu
 display_menu() {
   echo "
-  1. Set DNS to localhost (127.0.0.1)
+  1. **Set DNS to localhost (127.0.0.1)**
   2. Manual Set
   3. Reset To Default resolv.conf
   4. Exit
@@ -23,7 +23,7 @@ display_menu() {
 set_dns_localhost() {
   echo "Setting DNS to localhost..."
   sudo echo "nameserver 127.0.0.1" > /etc/resolv.conf
-  echo "DNS set to localhost successfully."
+  echo -e "\e[32mDNS set to localhost successfully.\e[0m"
 }
 
 # Function for manual DNS setting
@@ -41,14 +41,14 @@ manual_dns_set() {
     echo "nameserver $SECONDARY_DNS" | sudo tee -a /etc/resolv.conf
   fi
 
-  echo "DNS servers set successfully."
+  echo -e "\e[32mDNS servers set successfully.\e[0m"
 }
 
 # Function to reset DNS to default
 reset_dns() {
   echo "Resetting DNS to default..."
   sudo mv /etc/resolv.conf.bak /etc/resolv.conf
-  echo "DNS reset to default successfully."
+  echo -e "\e[32mDNS reset to default successfully.\e[0m"
 }
 
 # Main script execution
