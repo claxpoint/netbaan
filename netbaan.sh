@@ -16,7 +16,9 @@ if [ -n "$SECONDARY_DNS" ]; then
   echo "nameserver $SECONDARY_DNS" | sudo tee -a /etc/resolv.conf
 fi
 
-echo "DNS settings changed to: $PRIMARY_DNS"
+# Print confirmation message in green (temporary)
+echo -e "\e[32mDNS settings changed to: $PRIMARY_DNS"
+
 if [ -n "$SECONDARY_DNS" ]; then
-  echo "and $SECONDARY_DNS"
+  echo -e "\e[32mand $SECONDARY_DNS\e[0m"
 fi
