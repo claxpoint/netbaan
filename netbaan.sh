@@ -73,4 +73,17 @@ echo "\*\* Iranian Servers \*\*"
 fastest\_server\=""
 fastest\_ping\_time\=9999  \# Initialize with a high value
 for server in "</span>{iranian_dns_servers[@]}"; do
-    ping_time=$(ping -c 3 -W 1 $server | grep "time" | awk '{print
+    ping_time=$(ping -c 3 -W 1 $server | grep "time" | awk '{print <span class="math-inline">7\}'\)
+ping\_time\=</span>{ping_time%ms}  # Remove "ms" from the end
+
+    echo "  - $server: $ping_time ms"
+
+    if [[ $ping_time -lt $fastest_ping_time ]]; then
+      fastest_server=$server
+      fastest_ping_time=<span class="math-inline">ping\_time
+fi
+done
+\# Test global DNS servers
+echo "\*\* Global Servers \*\*"
+for server in "</span>{global_dns_servers[@]}"; do
+    ping_time=$(ping -c 3 -W 1 $server | grep "time" | awk '{print $
