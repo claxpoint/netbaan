@@ -24,7 +24,7 @@ display_menu() {
 set_dns_localhost() {
   echo "Setting DNS to localhost..."
   sudo echo "nameserver 127.0.0.1" > /etc/resolv.conf
-  echo "DNS set to localhost successfully."
+  echo -e "\e[32mDNS set to localhost successfully.\e[0m"
 }
 
 # Function for manual DNS setting
@@ -36,53 +36,48 @@ manual_dns_set() {
   read SECONDARY_DNS
 
   echo "Setting DNS servers..."
-  # Combine primary and secondary DNS (if provided) in a single echo command
-  echo "nameserver $PRIMARY_DNS $SECONDARY_DNS" | sudo tee /etc/resolv.conf
+  sudo echo "nameserver $PRIMARY_DNS" > /etc/resolv.conf
 
-  echo "DNS servers set successfully."
+  if [ -n "$SECONDARY_DNS" ]; then
+    echo "nameserver $SECONDARY_DNS" | sudo tee -a /etc/resolv.conf
+  fi
+
+  echo -e "\e[32mDNS servers set successfully.\e[0m"
 }
 
 # Function to reset DNS to default
 reset_dns() {
   echo "Resetting DNS to default..."
   sudo mv /etc/resolv.conf.bak /etc/resolv.conf
-  echo "DNS reset to default successfully."
+  echo -e "\e[32mDNS reset to default successfully.\e[0m"
 }
 
-# Function to test DNS servers with progress bars
+# Function to test DNS servers
 test_dns_servers() {
-  if [ -z "$PRIMARY_DNS" ]; then
-    echo "Please set DNS servers first (option 2)."
-    return
+  echo "** Testing DNS Servers **"
+  echo "========================="
+
+  if [ -n "$PRIMARY_DNS" ]; then
+    echo "Testing Primary DNS Server ($PRIMARY_DNS):"
+    ping -c 3 $PRIMARY_DNS &> /dev/null
+    if [ $? -eq 0 ]; then
+      echo "  - Response received (success)"
+    else
+      echo "  - No response (failure)"
+    fi
   fi
 
-  # Test primary DNS server
-  echo "** Testing Primary DNS Server ($PRIMARY_DNS)..."
-  ping_time=$(ping -c 3 -W 1 $PRIMARY_DNS | grep "time" | awk '{print $7}')
-  ping_time=${ping_time%ms}  # Remove "ms" from the end
-  draw_progress_bar $ping_time
-
-  # Test secondary DNS server (if provided)
   if [ -n "$SECONDARY_DNS" ]; then
-    echo "** Testing Secondary DNS Server ($SECONDARY_DNS)..."
-    secondary_ping_time=$(ping -c 3 -W 1 $SECONDARY_DNS | grep "time" | awk '{print $7}')
-    secondary_ping_time=${secondary_ping_time%ms}  # Remove "ms" from the end
-    draw_progress_bar $secondary_ping_time
+    echo "Testing Secondary DNS Server ($SECONDARY_DNS):"
+    ping -c 3 $SECONDARY_DNS &> /dev/null
+    if [ $? -eq 0 ]; then
+      echo "  - Response received (success)"
+    else
+      echo "  - No response (failure)"
+    fi
   fi
-}
 
-# Function to draw a simple progress bar
-draw_progress_bar() {
-  local ping_time="$1"
-  local max_time=100  # Adjust this value as needed (higher for slower connections)
-  local bar_length=40  # Adjust this value to control the bar length
-
-  local progress=$((ping_time * 100 / max_time))
-  local filled_chars=$((progress * bar_length / 100))
-  local empty_chars=$((bar_length - filled_chars))
-
-  # Create the progress bar
-  printf "[%-${filled_chars}s%-${empty_chars}s] %s ms\n" "=" " " "$ping_time"
+  echo "========================="
 }
 
 # Main script execution
