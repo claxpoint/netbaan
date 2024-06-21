@@ -16,7 +16,7 @@ Windows - ❌ A little bit left to release... 🏗
 Windows CLI - ✅ [Download it from here](https://github.com/claxpoint/netbaan/releases/download/UPD-v1.0/NetBaanV1_WinCLI.bat) - v1.0 - *Need Run as administrator*
 
 
-Android - ✅ - [Download it from here](https://github.com/claxpoint/nb/releases/download/UPD-v1.0/NetBaanV1_Universal.apk) - v1.0
+Android - ✅ - [Download it from here](https://github.com/claxpoint/netbaan/releases/download/UPD-v1.0/NetBaanV1_Universal.apk) - v1.0
 
 
 Mac - ❌
