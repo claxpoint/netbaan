@@ -2,7 +2,7 @@
 
 # Script title and information
 echo "\e[32m==========================================================================.\e[0m"
-echo "\e[32m      SWDNS - Smart DNS Changer v1.1      .\e[0m"
+echo "\e[32m      NetBaan - Smart DNS Changer v1.0      \e[0m"
 echo "\e[32m==========================================================================.\e[0m"
 echo "\e[32mCopyright (c) 2023 Claxpoint. All rights reserved..\e[0m"
 echo "\e[32mhttps://github.com/claxpoint.\e[0m"
