@@ -17,8 +17,8 @@ if [ -n "$SECONDARY_DNS" ]; then
 fi
 
 # Print confirmation message in green (temporary)
-echo -e "\e[32mDNS settings changed to: $PRIMARY_DNS\e[0m"
+echo "\e[32mDNS settings changed to: $PRIMARY_DNS\e[0m"
 
 if [ -n "$SECONDARY_DNS" ]; then
-  echo -e "\e[32mand $SECONDARY_DNS\e[0m"
+  echo "\e[32mand $SECONDARY_DNS\e[0m"
 fi
