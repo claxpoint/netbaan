@@ -1,8 +1,5 @@
 #!/bin/bash
 
-:: Inspired by: https://github.com/claxpoint
-MSHTA.EXE vbscript:Close(MsgBox("Welcome! Click on OK for continue.",vbOKOnly,"NetBaan - v1.0"))
-
 @echo off
 cls
 color 2
