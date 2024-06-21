@@ -1,12 +1,12 @@
 #!/bin/sh
 
 # Script title and information
-echo "=========================================================================="
-echo "      SWDNS - Smart DNS Changer v1.1      "
-echo "=========================================================================="
-echo "Copyright (c) 2023 Claxpoint. All rights reserved."
-echo "https://github.com/claxpoint"
-echo "=========================================================================="
+echo "\e[32m==========================================================================.\e[0m"
+echo "\e[32m      SWDNS - Smart DNS Changer v1.1      .\e[0m"
+echo "\e[32m==========================================================================.\e[0m"
+echo "\e[32mCopyright (c) 2023 Claxpoint. All rights reserved..\e[0m"
+echo "\e[32mhttps://github.com/claxpoint.\e[0m"
+echo "\e[32m==========================================================================.\e[0m"
 
 # Function to display the main menu
 display_menu() {
@@ -42,7 +42,7 @@ manual_dns_set() {
     echo "nameserver $SECONDARY_DNS" | sudo tee -a /etc/resolv.conf
   fi
 
-  echo -e "\e[32mDNS servers set successfully.\e[0m"
+  echo "\e[32mDNS servers set successfully.\e[0m"
 }
 
 # Function to reset DNS to default
