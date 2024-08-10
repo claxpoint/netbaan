@@ -3,8 +3,8 @@ A application project that helps your internet optimize and boost with U³DNS - 
 
 پروژه ای برای دستیابی مردم به اینترنت سریع تر با استفاده از U³DNS و DoH , DoP
 
-DOP = Dns on proxy (u3jit.pages.dev)
-DOH = Dns on Https
+DOP = Dns over proxy (u3jit.pages.dev)
+DOH = Dns over Https
 
 Released OS:
 
